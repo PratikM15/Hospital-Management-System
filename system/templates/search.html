@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+    <title>Hospital Management</title>
+  </head>
+  <body>
+{% load static %}
+  <nav style="background-color:#FF8C00 ; font-size: 20px;border-bottom:solid black 3px;border-top:solid black 3px;margin-bottom:10px">
+  <div class="container-fluid">
+    <h1><center style="color:black">Hospital Management Portal</center></h1>
+  </div>
+</nav>
+
+
+<ul class="nav justify-content-center">
+    <li class="nav-item" style="padding:10px;">
+      <form action='login' method='POST'>{% csrf_token %}
+<button type='submit' class="btn btn-info">BACK</button>
+</form>
+  </li>
+    <li class="nav-item" style="padding:10px;">
+  <form class="form row" action="search" method="post">{% csrf_token %}
+        <input type="text" class="col-9" type="search" placeholder="Search" aria-label="Search" name="key" style="">
+    <button class="btn btn-success col-3" type="submit">Search</button>
+    </form>
+  </li>
+</ul>
+
+
+<div class="container card col-lg-6" id="all" role="tabpanel" style="margin-top:20px;margin-bottom:20px;padding:20px">
+          <h5><b><center>Search For : {{sk}}</center></b></h5>
+       {% for obj in lst %}
+       <div class="row" style="margin-top:20px;margin-bottom:20px">
+       <div class="col-6">
+       <h5 class="card-title">Serial No : {{obj.0}}</h5>
+       <h5 class="card-title">Name : {{obj.1}}</h5>
+       <h5 class="card-title">Guardians's Name :{{obj.7}}</h5>
+       <h5 class="card-title">Age : {{obj.2}}</h5>
+       <h5 class="card-title">Sex : {{obj.3}}</h5>
+       <h5 class="card-title">Height : {{obj.4}}</h5>
+       <h5 class="card-title">Weight : {{obj.5}}</h5>
+       <h5 class="card-title">Blood group : {{obj.6}}</h5>
+       <h5 class="card-title">Address : {{obj.8}}</h5>
+       <h5 class="card-title">Arrival Date : {{obj.18}}</h5>
+       </div>
+       <div class="col-6">
+       <h5 class="card-title">City : {{obj.9}}</h5>
+       <h5 class="card-title">State : {{obj.10}}</h5>
+       <h5 class="card-title">Mobile : {{obj.11}}</h5>
+       <h5 class="card-title">Email : {{obj.12}}</h5>
+       <h5 class="card-title">Doctor : {{obj.13}}</h5>
+       <h5 class="card-title">Disease : {{obj.14}}</h5>
+       <h5 class="card-title">Medicine : {{obj.15}}</h5>
+       <h5 class="card-title">Bill : Rs. {{obj.16}}</h5>
+       <h5 class="card-title">Payment : {{obj.17}}</h5>
+       <h5 class="card-title">Leaving Date : {{obj.19}}</h5>
+           </div>
+        </div>
+        <hr>
+      {% endfor %}
+
+        </div>
+
+
+
+
+
+
+
+<div class="card text-center" style="border-bottom:solid black 3px;border-top:solid black 3px;">
+  <div class="card-body">
+    <h5 class="card-title">Check out Developers Community Page</h5>
+    <p class="card-text"></p>
+    <a href="https://devtechcommune.herokuapp.com/" class="btn btn-warning">Visit Us</a>
+  </div>
+  <div class="card-footer" style="background-color: #ff8c00;border-top:solid black 3px;font-size:20px; color:black">
+      <center>Developed By : @ Pratik Moharkar</center>
+  </div>
+</div>
+
+  <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  </body>
+</html>
