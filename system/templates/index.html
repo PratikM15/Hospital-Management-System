@@ -61,7 +61,8 @@
 
 <div class="container col-lg-3">
     <center><h1><b>Employee Login</b></h1></center>
-    <form action="login" method="POST" action = "login" >{% csrf_token %}
+    <form action="login" method="POST" action = "login" >
+        {% csrf_token %}
   <div class="form-group" style="font-size:20px">
     <label for="formGroupExampleInput"style="padding:10px">Enter Username</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Username" name="username">

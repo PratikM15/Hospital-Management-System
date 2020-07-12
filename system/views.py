@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import Patients
 from datetime import date
 # Create your views here.
@@ -9,6 +11,7 @@ def index(request):
     return render(request, "index.html")
 
 
+@csrf_exempt
 def login(request):
     global username
     lst=[]
@@ -41,6 +44,8 @@ def logout(request):
       pass
    return render(request, 'index.html')
 
+
+@csrf_exempt
 def add(request):
     if request.method == "POST":
         name = request.POST.get('name', 'default')
@@ -70,6 +75,8 @@ def add(request):
         arg = {'header': 'Successfull', 'content': 'Registration has been completed Successfully'}
         return render(request, "success.html", arg)
 
+
+@csrf_exempt
 def update(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -86,6 +93,8 @@ def update(request):
         arg = {'header': 'Failed', 'content': 'Incorrect Details'}
         return render(request, 'success.html', arg)
 
+
+@csrf_exempt
 def delete(request):
     if request.method == "POST":
         try:
@@ -104,6 +113,8 @@ def delete(request):
             arg = {'header': 'Failed', 'content': 'Incorrect Details'}
             return render(request, 'success.html', arg)
 
+
+@csrf_exempt
 def modify(request):
     if request.method == "POST":
         name = request.POST.get('name', 'default')
@@ -143,6 +154,8 @@ def modify(request):
         arg = {'header': 'Successfull', 'content': 'Updation has been completed Successfully'}
         return render(request, "success.html", arg)
 
+
+@csrf_exempt
 def search(request):
     if request.method == "POST":
         sk = request.POST.get('key', 'Not Found')
